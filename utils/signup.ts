@@ -25,7 +25,7 @@ export async function signup(page: Page) {
 
   await page.getByRole('textbox', { name: 'Email Address *' }).fill('vegie+' + email + '@skunkworks.ai');
   await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
-  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-8503045209');
+  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-3142008422');
 
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: 'Choose Package' }).first().click();
