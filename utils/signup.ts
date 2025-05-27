@@ -15,7 +15,6 @@ export async function signup(page: Page) {
 
   await page.getByRole('link', { name: 'Signup' }).click();
   console.log('✅ Clicked Signup link');
-  console.log('✅ Visited homepage');
 
   await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);
   console.log(`✅ First Name filled: ${firstName}`);
@@ -45,23 +44,22 @@ export async function signup(page: Page) {
 
   await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
   console.log(`✅ Address filled: ${address}`);
+//   await page.getByRole('checkbox', { name: 'Did someone invite you?' }).click();
 
-// Uncomment this line if there is no Sponsor code
-  // await page.getByRole('checkbox', { name: 'Did someone invite you?' }).click();
-
-  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('SC-3141029388');
+  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-6641906171');
   console.log('✅ Sponsor ID filled');
 
   await page.getByRole('button', { name: 'Next' }).click();
   console.log('✅ Clicked Next');
 
   // Uncomment the following lines to test different packages
-  await associate(page);
+  // await associate(page);
   // await builder(page);
   // await consultant(page);
   // await director(page);
   // await executive(page);
 
+  await page.pause();
   await page.getByText('Terms and Condition').click();
   console.log('✅ Clicked Terms and Condition');
 
@@ -72,4 +70,4 @@ export async function signup(page: Page) {
   console.log('✅ Clicked Understood');
 
   console.log('🎉 Test completed successfully!');
-}
+  }
