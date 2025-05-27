@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import { expect, Page } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive } from './packages';
-=======
-import { Page } from '@playwright/test';
-import { faker } from '@faker-js/faker';
->>>>>>> c8c428730790047ccd38d9b677aaf1644375eb44
 
 export async function signup(page: Page) {
   const firstName = faker.person.firstName();
@@ -16,7 +11,6 @@ export async function signup(page: Page) {
   const address = faker.location.streetAddress();
 
   await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
-<<<<<<< HEAD
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();
@@ -77,29 +71,3 @@ export async function signup(page: Page) {
 
   console.log('🎉 Test completed successfully!');
   }
-=======
-  await page.getByRole('link', { name: 'Signup' }).click();
-
-  await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);
-  await page.getByRole('textbox', { name: 'Middle Name' }).fill(middleName);
-  await page.getByRole('textbox', { name: 'Last Name *' }).fill(lastName);
-  await page.getByRole('textbox', { name: 'Birthday *' }).fill(birthday);
-
-  await page.getByRole('combobox').filter({ hasText: 'Gender' }).click();
-  await page.getByRole('option', { name: 'Male', exact: true }).click();
-
-  await page.getByRole('combobox').filter({ hasText: 'Status' }).click();
-  await page.getByRole('option', { name: 'Single' }).click();
-
-  await page.getByRole('textbox', { name: 'Email Address *' }).fill('vegie+' + email + '@skunkworks.ai');
-  await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
-  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-3142008422');
-
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'Choose Package' }).first().click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByText('Terms and Condition').click();
-  await page.getByRole('button', { name: 'Pay Now' }).click();
-  await page.getByRole('button', { name: 'Understood' }).click();
-}
->>>>>>> c8c428730790047ccd38d9b677aaf1644375eb44
