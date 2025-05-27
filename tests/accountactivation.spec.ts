@@ -1,6 +1,5 @@
 import { test } from '@playwright/test';
-import { signup } from '../utils/signup.ts'; 
-import { adminLogin } from '../utils/fixtures.ts';
+import { adminLogin } from '../utils/login.ts';
 
 test('Account activation after signup', async ({ page }) => {
   await adminLogin(page);

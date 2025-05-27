@@ -1,20 +1,18 @@
 import { test } from '@playwright/test';
-import { LoginPage } from '../pages/login';
-import { validUser, InvalidUser } from '../utils/credentials';
+import { memberLogin, memberIncorrectLogin, adminLogin, adminIncorrectLogin } from '../utils/login';
 
-
-test('Correct credential', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-
-  await loginPage.goto();
-  await loginPage.login(validUser.email, validUser.password);
-  await loginPage.assertLoginSuccess();
+test('test valid member login credential', async ({ page }) => {
+  await memberLogin(page);
 });
 
-test('Incorrect credential', async ({ page }) => {
-  const loginPage = new LoginPage(page);
+test('test invalid member login credential', async ({ page }) => {
+  await memberIncorrectLogin(page);
+});
 
-  await loginPage.goto();
-  await loginPage.login(InvalidUser.email, InvalidUser.password);
-  await loginPage.assertLoginFailure();
+test('test valid admin login credential', async ({ page }) => {
+  await adminLogin(page);
+});
+
+test('test invalid admin login credential', async ({ page }) => {
+  await adminIncorrectLogin(page);
 });

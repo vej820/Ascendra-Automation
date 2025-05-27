@@ -1,5 +1,5 @@
 export const validUser = {
-    email: 'admin',
+    email: 'sysadmin',
     password: 'a$c3ndr@_Adm!N'
   };
 
