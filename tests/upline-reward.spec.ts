@@ -1,6 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { levels } from '../utils/levels';
+<<<<<<< HEAD
 import { memberLogin } from '../utils/login.ts';
+=======
+import { memberLogin } from '../utils/fixtures.ts';
+>>>>>>> c8c428730790047ccd38d9b677aaf1644375eb44
 
 test('Calculate upline reward based on BV and rank', async ({ page }) => {
   await memberLogin(page);

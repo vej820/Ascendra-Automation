@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
+<<<<<<< HEAD
 import { memberLogin } from '../utils/login';
+=======
+import { memberLogin } from '../utils/fixtures';
+>>>>>>> c8c428730790047ccd38d9b677aaf1644375eb44
 import { levels } from '../utils/levels';
 
 test('Calculate total binary value per side with BV capping and full logging', async ({ page }) => {
