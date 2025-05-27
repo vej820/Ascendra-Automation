@@ -3,7 +3,7 @@ import { expect, Page } from '@playwright/test';
 export async function associate(page: Page) {
 
   await page.getByRole('button', { name: 'Choose Package' }).first().click();
-  await page.getByRole('combobox').nth(0).click();
+  await page.getByRole('combobox').first().click();
   await page.getByRole('option', { name: 'Wellness' }).click();
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Associate').isVisible();
