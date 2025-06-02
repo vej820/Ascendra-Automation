@@ -3,16 +3,16 @@ import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive } from './packages';
 
 export async function signup(page: Page) {
-  const firstName = faker.person.firstName();
-  const middleName = faker.person.middleName();
-  const lastName = faker.person.lastName();
-  const birthday = faker.date.birthdate({ min: 18, max: 50, mode: 'age' }).toISOString().split('T')[0];
-  const email = faker.person.firstName();
-  const address = faker.location.streetAddress();
 
   const packageFns = [associate, builder, consultant, director, executive];
 
   for (const pkg of packageFns) {
+    const firstName = faker.person.firstName();
+    const middleName = faker.person.middleName();
+    const lastName = faker.person.lastName();
+    const birthday = faker.date.birthdate({ min: 18, max: 50, mode: 'age' }).toISOString().split('T')[0];
+    const email = faker.person.firstName();
+    const address = faker.location.streetAddress();
     // Visit and open signup
     await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
     console.log('✅ Visited homepage');
@@ -50,7 +50,7 @@ export async function signup(page: Page) {
     await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
     console.log(`✅ Address filled: ${address}`);
 
-    await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-3141029388');
+    await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-9276929784');
     console.log('✅ Sponsor ID filled');
 
     await page.getByRole('button', { name: 'Next' }).click();

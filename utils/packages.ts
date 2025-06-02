@@ -14,6 +14,7 @@ export async function associate(page: Page) {
   }
 
   export async function builder(page: Page) {
+  await page.pause
   await page.getByRole('button', { name: 'Choose Package' }).nth(1).click();
   await page.getByRole('combobox').nth(1).click();
   await page.getByRole('option', { name: 'Insurance' }).click();
