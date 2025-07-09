@@ -7,17 +7,19 @@ export async function adminLogin(page: Page) {
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
-    await page.getByRole('textbox', { name: 'Password' }).fill('a$c3ndr@_Adm!N');
+    await page.getByRole('textbox', { name: 'Password' }).fill('@$c3nDr@!2025');
     await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.getByRole('paragraph').filter({ hasText: 'Dashboard' })).toBeVisible();
+    await expect(page.getByRole('paragraph').filter({ hasText: /^Users$/ })).toBeVisible();
   }
 
   export async function adminIncorrectLogin(page: Page) {
     await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
+    console.log('successfully inputs username');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
     await page.getByRole('textbox', { name: 'Password' }).fill('a$c3ndr@_Adm!Ns');
+    console.log('successfully inputs password');
     await page.getByRole('button', { name: 'Login' }).click();
     await expect(page.getByText('Incorrect Username or Password')).toBeVisible();
   }
@@ -49,8 +51,10 @@ export async function memberIncorrectLogin(page: Page) {
   await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('member');
+  console.log('successfully inputs username');
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');
   await page.getByRole('textbox', { name: 'Password' }).fill('a$c3ndr@_Adm!Ns');
+  console.log('successfully inputs password');
   await page.getByRole('button', { name: 'Login' }).click();
   await expect(page.getByText('Incorrect Username or Password')).toBeVisible();
 }

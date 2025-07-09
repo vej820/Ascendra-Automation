@@ -1,9 +1,12 @@
 import fs from 'fs';
 import readline from 'readline';
 import { google } from 'googleapis';
+import he from 'he'; // Used to decode HTML entities
+import path from 'path';
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 const TOKEN_PATH = 'token.json';
+const OUTPUT_PATH = path.join(__dirname, 'utils', 'latest-user.json');
 
 export async function getLatestEmail() {
   const auth = await authorize();
@@ -12,7 +15,7 @@ export async function getLatestEmail() {
   const res = await gmail.users.messages.list({
     userId: 'me',
     maxResults: 5,
-    q: 'from:noreply@estorya.ph subject:"Welcome! Your Account is Now Active"',
+    q: 'from:noreply@ascendrainternational.ai subject:"Welcome! Your Account is Now Active"',
     labelIds: ['INBOX'],
   });
 
@@ -41,12 +44,11 @@ export async function getLatestEmail() {
     return null;
   }
 
-  const html = Buffer.from(encodedBody, 'base64').toString('utf-8');
-  // console.log('📩 Decoded HTML:\n', html); // Optional: for debugging
+  // Decode base64 + HTML entities
+  const html = he.decode(Buffer.from(encodedBody, 'base64').toString('utf-8'));
 
   const username = html.match(/<strong>username:<\/strong>\s*([^<]+)/i)?.[1]?.trim();
   const password = html.match(/<strong>password:<\/strong>\s*([^<]+)/i)?.[1]?.trim();
-
 
   if (!username || !password) {
     console.log('❌ Failed to extract credentials.');
@@ -54,6 +56,12 @@ export async function getLatestEmail() {
   }
 
   console.log('✅ Extracted credentials:', { username, password });
+
+  // Save to latest-user.json
+  const userData = [{ email: username, password, sponsorCode: '' }];
+  fs.writeFileSync(OUTPUT_PATH, JSON.stringify(userData, null, 2));
+  console.log(`📁 Saved to ${OUTPUT_PATH}`);
+
   return { username, password };
 }
 

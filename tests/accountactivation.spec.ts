@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { adminLogin } from '../utils/login';
 
 test('Account activation after signup', async ({ page }) => {
@@ -6,11 +6,14 @@ test('Account activation after signup', async ({ page }) => {
 
 
   await page.getByRole('button', { name: 'Account Activation Account' }).click();
+  await page.pause(); // Pause for manual verification
   const activateButtons = await page.getByRole('button', { name: 'Activate' });
-  await page.waitForTimeout(3000) // Pause for manual verification
+  await page.waitForTimeout(1000) // Pause for manual verification
   await activateButtons.nth(-1).click();
   await page.getByRole('button', { name: 'Activate' }).click();
   await page.waitForTimeout(3000)
+  await expect(page.getByText('Account successfully')).toBeVisible();
+  console.log('✅ Account activated successfully');
 });
 
 

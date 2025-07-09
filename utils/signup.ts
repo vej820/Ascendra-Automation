@@ -44,11 +44,9 @@ export async function signup(page: Page) {
 
   await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
   console.log(`✅ Address filled: ${address}`);
-  // Uncomment below if there is no sponsor
-  await page.getByRole('checkbox', { name: 'Did someone invite you?' }).click();
 
-  // await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-7063824075');
-  // console.log('✅ Sponsor ID filled');
+  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-7063824075');
+  console.log('✅ Sponsor ID filled');
 
   await page.getByRole('button', { name: 'Next' }).click();
   console.log('✅ Clicked Next');
