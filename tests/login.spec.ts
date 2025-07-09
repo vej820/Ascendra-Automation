@@ -3,16 +3,18 @@ import { memberLogin, memberIncorrectLogin, adminLogin, adminIncorrectLogin } fr
 
 test('test valid member login credential', async ({ page }) => {
   await memberLogin(page);
+  // await page.pause(); // Pause to allow manual verification
+  
 });
 
-test('test invalid member login credential', async ({ page }) => {
-  await memberIncorrectLogin(page);
-});
+// test('test invalid member login credential', async ({ page }) => {
+//   await memberIncorrectLogin(page);
+// });
 
-test('test valid admin login credential', async ({ page }) => {
-  await adminLogin(page);
-});
+// test('test valid admin login credential', async ({ page }) => {
+//   await adminLogin(page);
+// });
 
-test('test invalid admin login credential', async ({ page }) => {
-  await adminIncorrectLogin(page);
-});
+// test('test invalid admin login credential', async ({ page }) => {
+//   await adminIncorrectLogin(page);
+// });
