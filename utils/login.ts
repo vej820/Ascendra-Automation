@@ -3,17 +3,17 @@ import fs from 'fs';
 
 
 export async function adminLogin(page: Page) {
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
-    await page.getByRole('textbox', { name: 'Password' }).fill('@$c3nDr@!2025');
+    await page.getByRole('textbox', { name: 'Password' }).fill('@sC3ndraA!i25');
     await page.getByRole('button', { name: 'Login' }).click();
     await expect(page.getByRole('paragraph').filter({ hasText: /^Users$/ })).toBeVisible();
   }
 
   export async function adminIncorrectLogin(page: Page) {
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     console.log('successfully inputs username');
@@ -30,7 +30,7 @@ export async function memberLogin(page: Page) {
   const credentials = JSON.parse(fs.readFileSync('./tests/utils/latest-user.json', 'utf-8'));
   const { email, password } = credentials;
 
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
 
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill(email);
@@ -48,7 +48,7 @@ export async function memberLogin(page: Page) {
 
 
 export async function memberIncorrectLogin(page: Page) {
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('member');
   console.log('successfully inputs username');

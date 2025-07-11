@@ -58,7 +58,7 @@ test('Signup using data from CSV (with sponsor code and rank)', async ({ page })
       continue;
     }
 
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
     console.log(`✅ Visited homepage for ${email}`);
 
     await page.getByRole('link', { name: 'Signup' }).click();

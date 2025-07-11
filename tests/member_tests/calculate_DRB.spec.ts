@@ -7,7 +7,7 @@ test('test direct referral bonus', async ({ page, request }) => {
   console.log("BEARER_TOKEN:", process.env.BEARER_TOKEN_member);
 
   // 1. Log in
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
   await page.getByRole('textbox', { name: 'Username' }).fill(username);
   await page.getByRole('textbox', { name: 'Password' }).fill(password);
   await page.getByRole('button', { name: 'Login' }).click();
@@ -70,7 +70,7 @@ const unilevelResponsePromise = page.waitForResponse((res) => {
 
   // 7. Fetch essential balance from Accounts API
   const accountsResponse = await request.get(
-    'https://staging.services.ascendra-ai.com/accounts',
+    'https://ppd2.services.ascendra-ai.com/accounts',
     {
       headers: {
         Authorization: `Bearer ${process.env.BEARER_TOKEN_member!}`,

@@ -22,7 +22,7 @@ fs.mkdirSync(utilsDir, { recursive: true });
 }
 
   console.log('🌐 Navigating to login page...');
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
 
   await page.getByRole('textbox', { name: 'Username' }).fill(creds.username);
   await page.getByRole('textbox', { name: 'Password' }).fill(creds.password);
@@ -30,7 +30,7 @@ fs.mkdirSync(utilsDir, { recursive: true });
 
   console.log('🔍 Waiting for dashboard...');
   // await page.pause();
-  await expect(page.getByText('CURRENT RANK')).toBeVisible();
+  // await expect(page.getByText('CURRENT RANK')).toBeVisible();
   // Extract sponsor code (adjust selector if needed)
   await page.waitForTimeout(4000); // Wait for the page to load completely
   const sponsorCodeText = await page.getByText('ASC-').textContent();

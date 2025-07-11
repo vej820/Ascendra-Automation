@@ -7,7 +7,7 @@ test('test direct referral bonus', async ({ page, request }) => {
   const password = "@sC3ndraA!i25";
 
   // 1. Log in
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
   await page.getByRole('textbox', { name: 'Username' }).fill(username);
   await page.getByRole('textbox', { name: 'Password' }).fill(password);
   await page.getByRole('button', { name: 'Login' }).click();

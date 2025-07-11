@@ -21,7 +21,7 @@ test('Change passwords for all CSV accounts', async ({ page }) => {
   for (const { email, password } of users) {
     console.log(`🔐 Logging in as: ${email}`);
 
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
 
     await page.getByRole('textbox', { name: 'Username' }).fill(email);
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
@@ -52,7 +52,7 @@ test('Change passwords for all CSV accounts', async ({ page }) => {
     }
 
     // Optional logout
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/logout');
+    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/logout');
   }
 
   console.log('🎉 All accounts processed.');

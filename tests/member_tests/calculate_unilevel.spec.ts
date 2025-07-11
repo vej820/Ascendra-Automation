@@ -7,12 +7,16 @@ test('fetch all expansion commissions (uni-level & binary)', async ({ page, requ
   console.log("BEARER_TOKEN:", process.env.BEARER_TOKEN_admin);
 
   // 1. Login
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
   await page.getByRole('textbox', { name: 'Username' }).fill(username);
   await page.getByRole('textbox', { name: 'Password' }).fill(password);
   await page.getByRole('button', { name: 'Login' }).click();
   await page.getByText('User Management', { exact: true }).waitFor();
   console.log('✅ Admin logged in successfully');
+  // await page.getByRole('textbox', { name: 'Search Name' }).fill('Tanya/Dhon Corpo');
+  // await page.getByRole('link', { name: 'Tanya/Dhon Corpo' }).click();
+  // await page.getByText('Transaction Logs').click();
+
 
   // 2. Loop to collect all transactions
   let pageNumber = 1;
@@ -22,7 +26,7 @@ test('fetch all expansion commissions (uni-level & binary)', async ({ page, requ
     console.log(`📄 Fetching page ${pageNumber}...`);
 
     const response = await request.post(
-      'https://staging.services.ascendra-ai.com/users/99/compensation/transactions',
+      'https://smart-city-ascendra-ser-ppd2-gbcrc5aybze4agaz.southeastasia-01.azurewebsites.net/users/2545/compensation/transactions', // change ID to change target member
       {
         headers: {
           Authorization: `Bearer ${process.env.BEARER_TOKEN_admin!}`,
@@ -87,8 +91,13 @@ test('fetch all expansion commissions (uni-level & binary)', async ({ page, requ
   }
 
   const totalExpansionCommission = totalExpansionUnilevel + totalExpansionBinary;
+  // const uvAndBvTotal = totalCommissionUnilevelView + totalCommissionBinaryTree;
 
   console.log(`🎯 Total Expansion Commission: PHP ${totalExpansionCommission.toLocaleString()}`);
-  console.log(`💰 Total Uni-Level Commission (Expansion only): PHP ${totalExpansionUnilevel.toLocaleString()}`);
-  console.log(`💰 Total Binary Commission (Expansion only): PHP ${totalExpansionBinary.toLocaleString()}`);
+  console.log(`💰 Commission logs (Unilevel only): PHP ${totalExpansionUnilevel.toLocaleString()}`);
+  console.log(`💰 Commission logs (Binary only): PHP ${totalExpansionBinary.toLocaleString()}`);
+
+  // console.log(`💰 Unilevel view : PHP ${totalCommissionUnilevelView.toLocaleString()}`);
+  // console.log(`💰 Binary view : PHP ${totalCommissionBinaryTree.toLocaleString()}`);
+  // console.log(`💰 Binary view : PHP ${uvAndBvTotal.toLocaleString()}`);
 });

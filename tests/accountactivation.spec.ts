@@ -4,9 +4,7 @@ import { adminLogin } from '../utils/login';
 test('Account activation after signup', async ({ page }) => {
   await adminLogin(page);
 
-
   await page.getByRole('button', { name: 'Account Activation Account' }).click();
-  await page.pause(); // Pause for manual verification
   const activateButtons = await page.getByRole('button', { name: 'Activate' });
   await page.waitForTimeout(1000) // Pause for manual verification
   await activateButtons.nth(-1).click();
