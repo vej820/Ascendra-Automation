@@ -48,7 +48,7 @@ export async function memberLogin(page: Page) {
 
 
 export async function memberIncorrectLogin(page: Page) {
-  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('member');
   console.log('successfully inputs username');

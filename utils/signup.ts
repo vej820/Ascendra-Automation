@@ -10,7 +10,7 @@ export async function signup(page: Page) {
   const email = faker.person.firstName();
   const address = faker.location.streetAddress();
 
-  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();

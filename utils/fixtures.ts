@@ -2,7 +2,7 @@ import { test as base, Page } from '@playwright/test';
 
 
 export async function adminLogin(page: Page) {
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('admin');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
@@ -11,7 +11,7 @@ export async function adminLogin(page: Page) {
   }
 
 export async function memberLogin(page: Page) {
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('member');
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');

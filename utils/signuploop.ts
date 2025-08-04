@@ -14,7 +14,7 @@ export async function signup(page: Page) {
     const email = faker.person.firstName();
     const address = faker.location.streetAddress();
     // Visit and open signup
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/');
     console.log('✅ Visited homepage');
 
     await page.getByRole('link', { name: 'Signup' }).click();
