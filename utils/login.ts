@@ -3,17 +3,17 @@ import fs from 'fs';
 
 
 export async function adminLogin(page: Page) {
-    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/');
     await page.getByRole('textbox', { name: 'Username' }).click();
-    await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
+    await page.getByRole('textbox', { name: 'Username' }).fill('ascendratesting@gmail.com');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
-    await page.getByRole('textbox', { name: 'Password' }).fill('@sC3ndraA!i25');
+    await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
     await page.getByRole('button', { name: 'Login' }).click();
     await expect(page.getByRole('paragraph').filter({ hasText: /^Users$/ })).toBeVisible();
   }
 
   export async function adminIncorrectLogin(page: Page) {
-    await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     console.log('successfully inputs username');

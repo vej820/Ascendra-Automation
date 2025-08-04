@@ -57,7 +57,7 @@ import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-5710724913';
+let sponsorCode = 'ASC-CA00000003';
 
 for (let i = 1; i <= 1; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
