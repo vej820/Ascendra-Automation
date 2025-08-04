@@ -28,7 +28,7 @@ test('User Signup Flow', async ({ page }) => {
   const address = faker.location.streetAddress();
   const fakeEmail = `vegie+${firstName.toLowerCase()}.${lastName.toLowerCase()}@skunkworks.ai`;
 
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();

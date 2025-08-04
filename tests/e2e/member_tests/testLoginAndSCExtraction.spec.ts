@@ -22,7 +22,7 @@ fs.mkdirSync(utilsDir, { recursive: true });
 }
 
   console.log('🌐 Navigating to login page...');
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net');
 
   await page.getByRole('textbox', { name: 'Username' }).fill(creds.username);
   await page.getByRole('textbox', { name: 'Password' }).fill(creds.password);

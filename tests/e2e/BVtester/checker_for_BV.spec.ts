@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { levels } from '../../../utils/levels';
 
 test('Calculate separated binary BV values by left/right upline roots', async ({ page }) => {
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net');
   console.log('✅ Navigated to login page');
 
   await page.getByRole('textbox', { name: 'Username' }).fill('vegie+elyse.lebsack@skunkworks.ai');
