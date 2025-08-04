@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
-import { associate, builder, consultant, director, executive } from '../utils/packages';
+import { associate, builder, consultant, director, executive } from '../../../utils/packages';
 
 // CSV parser
 function parseCSV(data: string) {

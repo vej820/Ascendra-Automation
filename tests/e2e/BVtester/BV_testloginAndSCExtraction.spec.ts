@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { getLatestEmail } from '../gmailReader';
+import { getLatestEmail } from '../../../gmailReader';
 import fs from 'fs';
 import path from 'path';
 
@@ -14,7 +14,7 @@ test('Login using Gmail credentials and extract Sponsor Code', async ({ page }) 
   console.log('✅ Password:', creds.password);
 
 const utilsDir = path.join(__dirname, 'utils');
-const filePath = path.join(utilsDir, 'latest-user.json');
+const filePath = path.join(utilsDir, 'BVtester.json');
 
 // Create the directory if it doesn't exist
 if (!fs.existsSync(utilsDir)) {
@@ -22,7 +22,7 @@ fs.mkdirSync(utilsDir, { recursive: true });
 }
 
   console.log('🌐 Navigating to login page...');
-  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
 
   await page.getByRole('textbox', { name: 'Username' }).fill(creds.username);
   await page.getByRole('textbox', { name: 'Password' }).fill(creds.password);
@@ -30,9 +30,9 @@ fs.mkdirSync(utilsDir, { recursive: true });
 
   console.log('🔍 Waiting for dashboard...');
   // await page.pause();
-  // await expect(page.getByText('CURRENT RANK')).toBeVisible();
+  await expect(page.getByText('CURRENT RANK')).toBeVisible();
   // Extract sponsor code (adjust selector if needed)
-  await page.waitForTimeout(4000); // Wait for the page to load completely
+  await page.waitForTimeout(2000); // Wait for the page to load completely
   const sponsorCodeText = await page.getByText('ASC-').textContent();
   const extractedCode = sponsorCodeText?.match(/ASC-\d+/)?.[0];
 
@@ -44,7 +44,7 @@ fs.mkdirSync(utilsDir, { recursive: true });
 
   console.log('✅ Sponsor Code Extracted:', extractedCode);
 
-  // Append to latest-user.json
+  // Append to BVtester.json
 let data = [];
 
 if (fs.existsSync(filePath)) {
@@ -61,7 +61,7 @@ if (fs.existsSync(filePath)) {
       }
       // Optional: rename or reset the corrupted file
       fs.renameSync(filePath, filePath + '.bak');
-      console.log('🚨 Renamed corrupted file to latest-user.json.bak');
+      console.log('🚨 Renamed corrupted file to BVtester.json.bak');
       data = [];
     }
   }
@@ -76,5 +76,5 @@ if (!fs.existsSync(utilsDir)) {
   fs.mkdirSync(utilsDir, { recursive: true });
 }
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-  console.log('📥 Appended to latest-user.json');
+  console.log('📥 Appended to BVtester.json');
 });

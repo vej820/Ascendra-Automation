@@ -3,13 +3,13 @@ import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import { faker } from '@faker-js/faker';
-import { associate, builder, consultant, director, executive} from '../../utils/packages';
-import { levels } from '../../utils/levels';
+import { associate, builder, consultant, director, executive} from '../../../utils/packages';
+import { levels } from '../../../utils/levels';
 
 
 test('BV login and check', async ({ page, browser }) => {
 
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
 
   await page.getByRole('textbox', { name: 'Username' }).click();
   //Update username and password to enable assigning left member and right member

@@ -13,7 +13,7 @@ test('Calculate total unilevel commission using JSON mapping', async ({ page }) 
   };
 
   // Go to login page
-  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   console.log('✅ Navigated to login');
 
   // Login

@@ -1,22 +1,24 @@
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { associate, builder, consultant, director, executive } from '../utils/packages';
-import { getRandomUnusedPackage } from '../utils/randomPackageSelector';
+import { associate, builder, consultant, director, executive } from '../../../utils/packages';
+import { getRandomUnusedPackage } from '../../../utils/randomPackageSelector';
 import fs from 'fs';
 import path from 'path';
 
 // ✅ Read sponsorCode from latest-user.json
-const userFilePath = path.join(__dirname, 'utils', 'latest-user.json');
+const userFilePath = path.join(__dirname, '..', '..', '..', 'utils', 'latest-user.json');
 let sponsorCode = '';
 
 if (fs.existsSync(userFilePath)) {
   const users = JSON.parse(fs.readFileSync(userFilePath, 'utf-8'));
-  const lastUser = users[users.length - 1];
-  sponsorCode = lastUser?.sponsorCode;
+  if (Array.isArray(users) && users.length > 0) {
+    const lastUser = users[users.length - 1];
+    sponsorCode = lastUser?.sponsorCode || '';
+  }
 }
 
 if (!sponsorCode) {
-  throw new Error('❌ No sponsor code found in latest-user.json');
+  throw new Error('❌ No sponsor code found in latest-user.json. Please ensure the file exists and contains at least one user with a sponsorCode.');
 }
 
 test('User Signup Flow', async ({ page }) => {
@@ -28,7 +30,7 @@ test('User Signup Flow', async ({ page }) => {
   const address = faker.location.streetAddress();
   const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();

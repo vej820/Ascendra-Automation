@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { associate, builder, consultant, director, executive } from '../../utils/packages';
-import { getRandomUnusedPackage } from '../../utils/randomPackageSelector';
+import { associate, builder, consultant, director, executive } from '../../../utils/packages';
+import { getRandomUnusedPackage } from '../../../utils/randomPackageSelector';
 import fs from 'fs';
 import path from 'path';
 
@@ -28,7 +28,7 @@ test('User Signup Flow', async ({ page }) => {
   const address = faker.location.streetAddress();
   const fakeEmail = `vegie+${firstName.toLowerCase()}.${lastName.toLowerCase()}@skunkworks.ai`;
 
-  await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+  await page.goto('https://staging.sulod.ascendrainternational.ai/');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();

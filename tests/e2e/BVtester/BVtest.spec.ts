@@ -3,8 +3,8 @@ import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import { faker } from '@faker-js/faker';
-import { associate, builder, consultant, director, executive} from '../../utils/packages';
-import { levels } from '../../utils/levels';
+import { associate, builder, consultant, director, executive} from '../../../utils/packages';
+import { levels } from '../../../utils/levels';
 
 
 test('BV tester', async ({ page, browser }) => {

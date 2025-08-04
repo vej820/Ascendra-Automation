@@ -55,9 +55,9 @@
 
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { associate, builder, consultant, director, executive} from '../utils/packages';
+import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-4659711598';
+let sponsorCode = 'ASC-5710724913';
 
 for (let i = 1; i <= 1; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
@@ -68,7 +68,7 @@ for (let i = 1; i <= 1; i++) {
     const address = faker.location.streetAddress();
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/');
     console.log(`✅ [Run #${i}] Visited homepage`);
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);
@@ -87,11 +87,11 @@ for (let i = 1; i <= 1; i++) {
     await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
     await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill(sponsorCode);
     await page.getByRole('button', { name: 'Next' }).click();
-    // await associate(page);
+    await associate(page);
     // await builder(page);
     // await consultant(page);
     // await director(page);
-    await executive(page);
+    // await executive(page);
     await page.getByRole('checkbox', { name: 'I accept the terms and' }).click();
     await page.getByRole('button', { name: 'Pay Now' }).click();
     await page.getByText('Payment Instructions Sent').waitFor();

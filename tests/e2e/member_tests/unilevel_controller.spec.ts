@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { execSync } from 'child_process';
-import { rankConfig } from '../utils/config';
+import { rankConfig } from '../../../utils/config';
 import path from 'path';
 import fs from 'fs';
 
