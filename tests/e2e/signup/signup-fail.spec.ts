@@ -13,7 +13,7 @@ for (let i = 1; i <= 1; i++) {
     const address = faker.location.streetAddress();
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-    await page.goto('https://ascendra-portal-staging.azurewebsites.net/');
+    await page.goto('https://staging.sulod.ascendrainternational.ai/login');
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill('');
     await page.getByRole('textbox', { name: 'Middle Name' }).fill(middleName);

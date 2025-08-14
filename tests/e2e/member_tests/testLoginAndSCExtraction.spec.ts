@@ -13,13 +13,12 @@ test('Login using Gmail credentials and extract Sponsor Code', async ({ page }) 
   console.log('✅ Username:', creds.username);
   console.log('✅ Password:', creds.password);
 
-const utilsDir = path.join(__dirname, 'utils');
-const filePath = path.join(utilsDir, 'latest-user.json');
+  const utilsDir = path.join(__dirname, '..', '..', '..', 'utils');
+  const filePath = path.join(utilsDir, 'latest-user.json');
 
-// Create the directory if it doesn't exist
-if (!fs.existsSync(utilsDir)) {
-fs.mkdirSync(utilsDir, { recursive: true });
-}
+  if (!fs.existsSync(utilsDir)) {
+    fs.mkdirSync(utilsDir, { recursive: true });
+  }
 
   console.log('🌐 Navigating to login page...');
   await page.goto('https://staging.sulod.ascendrainternational.ai/');
@@ -29,52 +28,48 @@ fs.mkdirSync(utilsDir, { recursive: true });
   await page.getByRole('button', { name: 'Login' }).click();
 
   console.log('🔍 Waiting for dashboard...');
-  // await page.pause();
-  // await expect(page.getByText('CURRENT RANK')).toBeVisible();
-  // Extract sponsor code (adjust selector if needed)
-  await page.waitForTimeout(4000); // Wait for the page to load completely
-  const sponsorCodeText = await page.getByText('ASC-').textContent();
+  const sponsorLocator = page.getByText(/ASC-\d+/);
+  await sponsorLocator.waitFor();
+
+  const sponsorCodeText = await sponsorLocator.textContent();
   const extractedCode = sponsorCodeText?.match(/ASC-\d+/)?.[0];
 
   expect(extractedCode).toBeTruthy();
   if (!extractedCode) {
-    console.log('❌ Sponsor code not found.');
+    console.log('❌ Sponsor code not found. Nothing written.');
     return;
   }
 
   console.log('✅ Sponsor Code Extracted:', extractedCode);
 
-  // Append to latest-user.json
-let data = [];
+  // ----- APPEND-ONLY -----
+  let data: Array<{ email: string; password: string; sponsorCode: string }> = [];
 
-if (fs.existsSync(filePath)) {
-  const fileContent = fs.readFileSync(filePath, 'utf-8').trim();
-
-  if (fileContent) {
-    try {
-      data = JSON.parse(fileContent);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error('❌ Failed to parse JSON:', error.message);
-      } else {
-        console.error('❌ Failed to parse JSON:', error);
+  try {
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf-8').trim();
+      if (fileContent) {
+        const parsed = JSON.parse(fileContent);
+        if (Array.isArray(parsed)) {
+          data = parsed;
+        }
       }
-      // Optional: rename or reset the corrupted file
-      fs.renameSync(filePath, filePath + '.bak');
-      console.log('🚨 Renamed corrupted file to latest-user.json.bak');
-      data = [];
     }
+  } catch (err) {
+    console.error('❌ Failed to read/parse latest-user.json:', err);
+    fs.renameSync(filePath, filePath + '.bak');
+    data = [];
   }
-}
 
+  // Always append new record — no overwrite
   data.push({
     email: creds.username,
     password: creds.password,
     sponsorCode: extractedCode
   });
-if (!fs.existsSync(utilsDir)) {
-  fs.mkdirSync(utilsDir, { recursive: true });
-}
+  console.log('➕ Added new user entry.');
+
+  // Save back to file (overwrite the file content with full array)
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-  console.log('📥 Appended to latest-user.json');
+  console.log(`📥 Appended to latest-user.json (total: ${data.length} records)`);
 });

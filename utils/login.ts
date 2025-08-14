@@ -5,7 +5,7 @@ import fs from 'fs';
 export async function adminLogin(page: Page) {
     await page.goto('https://staging.sulod.ascendrainternational.ai/');
     await page.getByRole('textbox', { name: 'Username' }).click();
-    await page.getByRole('textbox', { name: 'Username' }).fill('ascendratesting@gmail.com');
+    await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
     await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
     await page.getByRole('button', { name: 'Login' }).click();

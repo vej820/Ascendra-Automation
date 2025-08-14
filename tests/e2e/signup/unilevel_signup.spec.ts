@@ -57,9 +57,9 @@ import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-CA00000003';
+let sponsorCode = 'ASC-5710724913';
 
-for (let i = 1; i <= 1; i++) {
+for (let i = 1; i <= 2; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
     const firstName = faker.person.firstName();
     const middleName = faker.person.middleName();

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { adminLogin } from '../../../utils/login';
+import { adminLogin } from '../../../../utils/login';
 
 
 test('Account activation after signup', async ({ page }) => {
@@ -8,9 +8,9 @@ test('Account activation after signup', async ({ page }) => {
   await page.getByRole('button', { name: 'Account Activation Account' }).click();
   const activateButtons = await page.getByRole('button', { name: 'Activate' });
   await page.waitForTimeout(1000) // Pause for manual verification
-  await activateButtons.nth(-1).click();
-  await page.getByRole('button', { name: 'Activate' }).click();
-  await page.waitForTimeout(3000)
+  await page.getByRole('cell', { name: 'Date Request' }).getByRole('img').click(); 
+  await activateButtons.nth(0).click();
+  await page.getByRole('button', { name: 'Confirm and Activate' }).click();
   await expect(page.getByText('Account successfully')).toBeVisible();
   console.log('✅ Account activated successfully');
 });
