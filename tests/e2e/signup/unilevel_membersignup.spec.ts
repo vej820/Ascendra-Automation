@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 // ✅ Read sponsorCode from latest-user.json
-const userFilePath = path.join(__dirname, '..', '..', '..', 'utils', 'latest-user.json');
+const userFilePath = path.join(__dirname, '..', 'member_tests', 'utils', 'latest-user.json');
 let sponsorCode = '';
 
 if (fs.existsSync(userFilePath)) {

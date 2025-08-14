@@ -13,7 +13,7 @@ test('Login using Gmail credentials and extract Sponsor Code', async ({ page }) 
   console.log('✅ Username:', creds.username);
   console.log('✅ Password:', creds.password);
 
-  const utilsDir = path.join(__dirname, '..', '..', '..', 'utils');
+  const utilsDir = path.join(__dirname, 'utils');
   const filePath = path.join(utilsDir, 'latest-user.json');
 
   if (!fs.existsSync(utilsDir)) {
