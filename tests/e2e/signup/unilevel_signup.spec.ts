@@ -57,9 +57,9 @@ import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-5710724913';
+let sponsorCode = 'ASC-3444537816';
 
-for (let i = 1; i <= 2; i++) {
+for (let i = 1; i <= 1; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
     const firstName = faker.person.firstName();
     const middleName = faker.person.middleName();
@@ -68,7 +68,7 @@ for (let i = 1; i <= 2; i++) {
     const address = faker.location.streetAddress();
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-    await page.goto('https://staging.sulod.ascendrainternational.ai/');
+    await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
     console.log(`✅ [Run #${i}] Visited homepage`);
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);

@@ -11,13 +11,13 @@ test('test valid admin login credential', async ({ page }) => {
   const fakeEmail = `vegie+${firstName.toLowerCase()}.${lastName.toLowerCase()}@skunkworks.ai`;
   const sponsorCode = 'ASC-6928862736';
   
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
   console.log('✅ Successfully navigated to login page');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
   console.log('✅ Successfully inputs username');
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');
-  await page.getByRole('textbox', { name: 'Password' }).fill('@sC3ndraA!i25');
+  await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
   console.log('✅ Successfully inputs password');
   await page.getByRole('button', { name: 'Login' }).click();
   await page.getByText('User Management', { exact: true }).waitFor();

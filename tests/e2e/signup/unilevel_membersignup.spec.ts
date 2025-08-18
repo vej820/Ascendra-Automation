@@ -30,7 +30,7 @@ test('User Signup Flow', async ({ page }) => {
   const address = faker.location.streetAddress();
   const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();

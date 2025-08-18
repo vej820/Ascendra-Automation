@@ -13,19 +13,22 @@ test('Login using Gmail credentials and extract Sponsor Code', async ({ page }) 
   console.log('✅ Username:', creds.username);
   console.log('✅ Password:', creds.password);
 
-  const utilsDir = path.join(__dirname, 'utils');
-  const filePath = path.join(utilsDir, 'latest-user.json');
+  const filePath = path.join(__dirname, 'utils','latest-user.json');
 
-  if (!fs.existsSync(utilsDir)) {
-    fs.mkdirSync(utilsDir, { recursive: true });
+  if (!fs.existsSync(filePath)) {
+    fs.mkdirSync(filePath, { recursive: true });
   }
 
   console.log('🌐 Navigating to login page...');
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
 
   await page.getByRole('textbox', { name: 'Username' }).fill(creds.username);
   await page.getByRole('textbox', { name: 'Password' }).fill(creds.password);
   await page.getByRole('button', { name: 'Login' }).click();
+  console.log('🔍 Verifying login success by checking URL...');
+  // Use a URL you expect after a successful login (e.g., includes '/dashboard')
+  await expect(page).toHaveURL(/.*dashboard/, { timeout: 10000 }); 
+  console.log('✅ Login successful! Now searching for Sponsor Code.');
 
   console.log('🔍 Waiting for dashboard...');
   const sponsorLocator = page.getByText(/ASC-\d+/);

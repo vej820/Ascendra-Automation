@@ -6,7 +6,7 @@ import fs from 'fs';
 
 // const RANK = 'BUILDER';
 // const MAX_DEPTH = rankConfig[RANK];
-const TOTAL_ACCOUNTS = 1;
+const TOTAL_ACCOUNTS = 2;
 
 test('Automate Unilevel commission', async () => {
   // const userJsonPath = path.join(__dirname, 'utils', 'latest-user.json');
@@ -14,7 +14,7 @@ test('Automate Unilevel commission', async () => {
   // console.log('🧹 Cleared latest-user.json before starting automation.\n');
 
 
-  for (let depth = 0; depth < TOTAL_ACCOUNTS; depth++) {
+  for (let depth = 1; depth <= TOTAL_ACCOUNTS; depth++) {
     console.log(`🧩 Creating Account at Depth ${depth}`);
 
 
@@ -26,8 +26,8 @@ test('Automate Unilevel commission', async () => {
       
     // } else {
 
-        execSync('npx playwright test unilevel_membersignup.spec.ts --headed', { stdio: 'inherit' });
-        execSync('npx playwright test accountactivation.spec.ts --headed', { stdio: 'inherit' });
+        execSync('npx playwright test unilevel_membersignup.spec.ts', { stdio: 'inherit' });
+        execSync('npx playwright test accountactivation.spec.ts', { stdio: 'inherit' });
         execSync('npx playwright test testLoginAndSCExtraction.spec.ts', { stdio: 'inherit' });
 
 
