@@ -57,7 +57,7 @@ import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-3444537816';
+let sponsorCode = 'ASC-5710724913';
 
 for (let i = 1; i <= 1; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
@@ -87,8 +87,8 @@ for (let i = 1; i <= 1; i++) {
     await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
     await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill(sponsorCode);
     await page.getByRole('button', { name: 'Next' }).click();
-    await associate(page);
-    // await builder(page);
+    // await associate(page);
+    await builder(page);
     // await consultant(page);
     // await director(page);
     // await executive(page);

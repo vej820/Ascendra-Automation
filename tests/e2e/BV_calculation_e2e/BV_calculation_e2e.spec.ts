@@ -14,9 +14,9 @@ test('BV calculation', async ({ page, browser }) => {
   const ranks = [associate, builder, consultant, director, executive];    
   const totalAccounts = 4; // total accounts to activate after signup
   // get the sponsor code from a user------------------------------------------------------------------
-  const username = "vegie+jovani.dare@skunkworks.ai";
-  const password = 'R97OVHAD';
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  const username = "vegie+arlo.crona@skunkworks.ai";
+  const password = 'YlWYG8zU';
+  await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill(username);
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');

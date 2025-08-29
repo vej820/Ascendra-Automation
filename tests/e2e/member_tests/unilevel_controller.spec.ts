@@ -6,7 +6,7 @@ import fs from 'fs';
 
 // const RANK = 'BUILDER';
 // const MAX_DEPTH = rankConfig[RANK];
-const TOTAL_ACCOUNTS = 2;
+const TOTAL_ACCOUNTS = 1;
 
 test('Automate Unilevel commission', async () => {
   // const userJsonPath = path.join(__dirname, 'utils', 'latest-user.json');
