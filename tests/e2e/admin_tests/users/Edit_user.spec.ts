@@ -34,7 +34,8 @@ test.describe('Admin Portal - Edit User', () => {
 
     // --- Find the user and open the Edit modal ---
     // Note: This test relies on 'vegie+zelma.kilback@skunkworks.ai' existing.
-    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-9089479468');
+    await page.pause();
+    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-3854856580');
     await page.locator('tbody tr').first().getByRole('button').click();
     await page.getByRole('menuitem', { name: 'Edit User' }).click();
 
@@ -61,7 +62,7 @@ test.describe('Admin Portal - Edit User', () => {
   // Test Case 2: Test for empty required fields validation.
   test('should display required field errors when clearing inputs and saving', async ({ page }) => {
     // --- Find the user and open the Edit modal ---
-    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-9089479468');
+    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-3854856580');
     await page.locator('tbody tr').first().getByRole('button').click();
     await page.getByRole('menuitem', { name: 'Edit User' }).click();
     console.log('✅ Navigated to the Edit User form.');
@@ -86,7 +87,7 @@ test.describe('Admin Portal - Edit User', () => {
   // Test Case 3: Test for invalid email format validation.
   test('should display an error for an invalid email format', async ({ page }) => {
     // --- Find the user and open the Edit modal ---
-    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-9089479468');
+    await page.getByRole('textbox', { name: 'Search Name' }).fill('ASC-3854856580');
     await page.locator('tbody tr').first().getByRole('button').click();
     await page.getByRole('menuitem', { name: 'Edit User' }).click();
 
@@ -95,8 +96,9 @@ test.describe('Admin Portal - Edit User', () => {
     console.log('✅ Entered an invalid email format.');
 
     // --- Attempt to save and assert the error ---
-    await page.getByRole('button', { name: 'Update User' }).click();
-    await expect(page.getByText('Invalid email format')).toBeVisible();
+    await page.getByRole('button', { name: 'Save Changes' }).click();
+    const errorMessage = page.getByText("Please include an '@' in the email address.");
+    await expect(errorMessage).toBeVisible();
     console.log('✅ Test Passed: Verified invalid email error message.');
   });
 

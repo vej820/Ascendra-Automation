@@ -12,7 +12,8 @@ test.describe('Admin Portal - Free Slot Creation', () => {
   // This hook runs before each test in this suite.
   // It handles the common login steps, keeping our tests clean and focused (DRY principle).
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
+    // await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
+    await page.goto('https://smartcity-project-a-portal-staging-hwdzfbateqe9ezhv.southeastasia-01.azurewebsites.net/');
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -31,7 +32,7 @@ test.describe('Admin Portal - Free Slot Creation', () => {
     const address = faker.location.streetAddress();
     const number = `09${faker.number.int({ min: 100000000, max: 999999999 })}`;
     const fakeEmail = `vegie+${firstName.toLowerCase()}.${lastName.toLowerCase()}@skunkworks.ai`;
-    const sponsorCode = 'ASC-6814736228';
+    const sponsorCode = 'ASC-5710724913';
 
     // --- Fill out the form ---
     await page.getByRole('button', { name: 'Add Free Slot' }).click();

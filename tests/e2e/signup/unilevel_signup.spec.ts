@@ -57,7 +57,7 @@ import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive} from '../../../utils/packages';
 
-let sponsorCode = 'ASC-5710724913';
+let sponsorCode = 'ASC-3629738808';
 
 for (let i = 1; i <= 1; i++) {
   test(`Signup Run #${i}`, async ({ page }) => {
@@ -69,6 +69,7 @@ for (let i = 1; i <= 1; i++) {
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
     await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
+    // await page.goto('https://smartcity-project-a-portal-staging-hwdzfbateqe9ezhv.southeastasia-01.azurewebsites.net/');
     console.log(`✅ [Run #${i}] Visited homepage`);
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);
@@ -87,8 +88,8 @@ for (let i = 1; i <= 1; i++) {
     await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
     await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill(sponsorCode);
     await page.getByRole('button', { name: 'Next' }).click();
-    // await associate(page);
-    await builder(page);
+    await associate(page);
+    // await builder(page);
     // await consultant(page);
     // await director(page);
     // await executive(page);

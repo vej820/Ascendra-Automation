@@ -65,8 +65,8 @@ export async function associate(page: Page) {
 
   // await page.getByRole('combobox').nth(4).click();
   await page.getByRole('combobox').nth(4).click();
-  await page.getByLabel('MVP (Combination)').getByText('MVP (Combination)').click();
-  // await page.getByLabel('MP (Insurance)').first().getByText('MP (Insurance)').click();
+  // await page.getByLabel('MVP (Combination)').getByText('MVP (Combination)').click();
+  await page.getByLabel('MP (Insurance)').first().getByText('MP (Insurance)').click();
   await page.getByRole('button', { name: 'Choose Package' }).nth(4).click();
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByText('Executive').isVisible();

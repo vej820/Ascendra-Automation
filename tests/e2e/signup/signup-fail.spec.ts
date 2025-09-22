@@ -12,8 +12,9 @@ for (let i = 1; i <= 1; i++) {
     const birthday = faker.date.birthdate({ min: 18, max: 50, mode: 'age' }).toISOString().split('T')[0];
     const address = faker.location.streetAddress();
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
-
-    await page.goto('https://staging.sulod.ascendrainternational.ai/login');
+    
+    await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
+    // await page.goto('https://smartcity-project-a-portal-staging-hwdzfbateqe9ezhv.southeastasia-01.azurewebsites.net/');
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill('');
     await page.getByRole('textbox', { name: 'Middle Name' }).fill(middleName);

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { getLatestEmail } from '../../../gmailReader';
+import { getLatestEmail } from '../../../../gmailReader';
 import fs from 'fs';
 import path from 'path';
 
