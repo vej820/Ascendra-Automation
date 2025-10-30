@@ -5,7 +5,7 @@ test('test valid member login credential', async ({ page }) => {
   await page.goto('https://ascendra-portal-staging.azurewebsites.net/login');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('vegie+updated2@skunkworks.ai');
-  console.log('successfully inputs email');
+  // console.log('successfully inputs email');
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');
   await page.getByRole('textbox', { name: 'Password' }).fill('kuN7jZ4g');
   console.log('Successfully inputs password');
