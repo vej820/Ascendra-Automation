@@ -2,6 +2,8 @@ import { expect, Page } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 import { associate, builder, consultant, director, executive } from './packages';
 
+
+let sponsorCode = 'ASC-5710724913';
 export async function signup(page: Page) {
   const firstName = faker.person.firstName();
   const middleName = faker.person.middleName();
@@ -10,7 +12,7 @@ export async function signup(page: Page) {
   const email = faker.person.firstName();
   const address = faker.location.streetAddress();
 
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/');
   console.log('✅ Visited homepage');
 
   await page.getByRole('link', { name: 'Signup' }).click();
@@ -45,7 +47,7 @@ export async function signup(page: Page) {
   await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
   console.log(`✅ Address filled: ${address}`);
 
-  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill('ASC-7063824075');
+  await page.getByRole('textbox', { name: 'Sponsor ID *' }).fill(sponsorCode);
   console.log('✅ Sponsor ID filled');
 
   await page.getByRole('button', { name: 'Next' }).click();

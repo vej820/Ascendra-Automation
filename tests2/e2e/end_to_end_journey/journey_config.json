@@ -1,0 +1,71 @@
+{
+  "environments": {
+    "staging": {
+      "signupUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/",
+      "memberPortalUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/",
+      "adminPortalUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/"
+    },
+    "production": {
+      "signupUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/",
+      "memberPortalUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/",
+      "adminPortalUrl": "https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/"
+    }
+  },
+  "defaultSponsorCodes": [
+    "ASC-8910258878"
+  ],
+  "packageTypes": {
+    "associate": {
+      "price": 8500,
+      "bv": 600
+    },
+    "builder": {
+      "price": 17500,
+      "bv": 1000
+    },
+    "consultant": {
+      "price": 45500,
+      "bv": 3200
+    },
+    "director": {
+      "price": 110500,
+      "bv": 8000
+    },
+    "executive": {
+      "price": 199800,
+      "bv": 10000
+    }
+  },
+  "testScenarios": {
+    "singleUser": {
+      "description": "Single user complete journey",
+      "userCount": 1,
+      "packageTypes": ["associate"]
+    },
+    "multiPackage": {
+      "description": "Multiple users with different packages",
+      "userCount": 5,
+      "packageTypes": ["associate", "builder", "consultant", "director", "executive"]
+    },
+    "commissionChain": {
+      "description": "Sponsor-downline commission verification",
+      "sponsorPackage": "director",
+      "downlineCount": 3,
+      "downlinePackage": "associate"
+    },
+    "bulkActivation": {
+      "description": "Bulk user signup and activation",
+      "userCount": 10,
+      "packageTypes": ["associate", "builder"]
+    }
+  },
+  "timeouts": {
+    "pageLoad": 30000,
+    "elementWait": 10000,
+    "apiResponse": 15000
+  },
+  "retrySettings": {
+    "maxRetries": 3,
+    "retryDelay": 2000
+  }
+}

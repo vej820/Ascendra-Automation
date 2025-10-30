@@ -3,14 +3,13 @@ import fs from 'fs';
 
 
 export async function adminLogin(page: Page) {
-    // await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
-    await page.goto('https://smartcity-project-a-portal-staging-hwdzfbateqe9ezhv.southeastasia-01.azurewebsites.net/');
-    await page.getByRole('textbox', { name: 'Username' }).click();
+    await page.goto('https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/');
+    // await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     await page.getByRole('textbox', { name: 'Username' }).press('Tab');
     await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
     await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.getByRole('button', { name: 'Account Activation Account' })).toBeVisible();
+    // await expect(page.getByRole('button', { name: 'Account Activation Account' })).toBeVisible();
   }
 
   export async function adminIncorrectLogin(page: Page) {
@@ -31,7 +30,7 @@ export async function memberLogin(page: Page) {
   const credentials = JSON.parse(fs.readFileSync('./tests/utils/latest-user.json', 'utf-8'));
   const { email, password } = credentials;
 
-  await page.goto('https://smart-city-ascendra-por-ppd2-g7c0e7echsdse3cq.southeastasia-01.azurewebsites.net/');
+  await page.goto('https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/');
 
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill(email);

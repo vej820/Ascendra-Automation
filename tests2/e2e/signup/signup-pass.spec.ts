@@ -13,7 +13,10 @@ for (let i = 1; i <= 1; i++) {
     const address = faker.location.streetAddress();
     const number = '09' + faker.number.int({ min: 100000000, max: 999999999 }).toString();
 
-    await page.goto('https://staging.sulod.ascendrainternational.ai/');
+    await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/');
+    // await page.goto('https://smartcity-a-portal-fd-ppd-hzg4bhfvf5drdxcs.z03.azurefd.net/');
+    // await page.goto('https://smartcity-project-a-portal-staging-hwdzfbateqe9ezhv.southeastasia-01.azurewebsites.net/');
+        
     console.log(`✅ Visited homepage`);
     await page.getByRole('link', { name: 'Signup' }).click();
     await page.getByRole('textbox', { name: 'First Name *' }).fill(firstName);
@@ -27,6 +30,7 @@ for (let i = 1; i <= 1; i++) {
     await page.getByRole('option', { name: 'Single' }).click();
 
     const fakeEmail = `vegie+${firstName.toLowerCase()}.${lastName.toLowerCase()}@skunkworks.ai`;
+    console.log(`Generated Email: ${fakeEmail}`);
     await page.getByRole('textbox', { name: 'Email Address *' }).fill(fakeEmail);
     await page.getByRole('textbox', { name: 'Contact Number *' }).fill(number);
     await page.getByRole('textbox', { name: 'Address *', exact: true }).fill(address);
@@ -37,6 +41,7 @@ for (let i = 1; i <= 1; i++) {
     // await consultant(page);
     // await director(page);
     // await executive(page);
+    await page.pause();
     await page.getByRole('checkbox', { name: 'I accept the terms and' }).click();
     await page.getByRole('button', { name: 'Pay Now' }).click();
     await page.getByText('Payment Instructions Sent').waitFor();
