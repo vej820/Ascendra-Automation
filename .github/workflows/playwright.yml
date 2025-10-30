@@ -6,6 +6,7 @@ on:
 
 jobs:
   test:
+    name: Run Playwright Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -23,9 +24,11 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      # ✅ Run ONLY tests inside the "tests/" folder
       - name: Run Playwright Tests in Parallel
-        run: npx playwright test --workers=4 --reporter=html
+        run: npx playwright test tests --workers=4 --reporter=html
 
+      # 📦 Upload HTML report so it’s viewable in GitHub Actions
       - name: Upload Playwright HTML Report
         if: always()
         uses: actions/upload-artifact@v4
