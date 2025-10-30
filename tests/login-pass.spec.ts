@@ -20,7 +20,7 @@ test('test valid admin login credential', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
   console.log('successfully inputs username');
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');
-  await page.getByRole('textbox', { name: 'Password' }).fill('@sC3ndraA!i25');
+  await page.getByRole('textbox', { name: 'Password' }).fill('P@ssword1');
   console.log('Successfully inputs password');
   await page.getByRole('button', { name: 'Login' }).click();
   await page.getByText('User Management', { exact: true }).waitFor();
