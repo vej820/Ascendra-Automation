@@ -13,7 +13,7 @@ export async function adminLogin(page: Page) {
   }
 
   export async function adminIncorrectLogin(page: Page) {
-    await page.goto('https://staging.sulod.ascendrainternational.ai/');
+    await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/login');
     await page.getByRole('textbox', { name: 'Username' }).click();
     await page.getByRole('textbox', { name: 'Username' }).fill('sysadmin');
     console.log('successfully inputs username');
@@ -48,7 +48,7 @@ export async function memberLogin(page: Page) {
 
 
 export async function memberIncorrectLogin(page: Page) {
-  await page.goto('https://staging.sulod.ascendrainternational.ai/');
+  await page.goto('https://smartcity-project-a-portal-ppd2-c3ave4fdfpbwdyd2.southeastasia-01.azurewebsites.net/login');
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).fill('member');
   console.log('successfully inputs username');
