@@ -26,3 +26,13 @@ test('test valid admin login credential', async ({ page }) => {
   await page.getByText('User Management', { exact: true }).waitFor();
   console.log('✅ Admin logged in successfully');
 });
+
+test('test invalid member login credential', async ({ page }) => {
+  await memberIncorrectLogin(page);
+  console.log('✅ Error message displayed for invalid member login');
+});
+
+test('test invalid admin login credential', async ({ page }) => {
+  await adminIncorrectLogin(page);
+  console.log('✅ Error message displayed for invalid admin login');
+});
